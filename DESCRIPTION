@@ -1,0 +1,26 @@
+Package: cleanbot
+Title:  ImACleanRobot
+Version: 0.0.1
+Authors@R: 
+    person(given = "Viola",
+           family = "Song",
+           role = c("aut", "cre"),
+           email = "1486340922@qq.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Clean and merge raw data From CDARS.
+Depends: R (>= 3.2)
+Imports:
+    dplyr,
+    readxl,
+    purrr,
+    xml2,
+    rvest,
+    stringr,
+    writexl,
+    haven,
+    utils
+License: license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
