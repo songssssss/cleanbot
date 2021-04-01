@@ -25,7 +25,12 @@ readnmerge=function(html=F){
   print(keyword)
   cat("Generating file list ...\n")
 
-  filelist=dir()%>%set_names()%>%tolower()%>%
+  if (html==F)
+    dir()%>%tolower%>%grepl(".xlsx",.)%>%dir()[.]->file
+  else
+    dir()%>%tolower%>%grepl(".xls",.)%>%dir()[.]->file
+  
+  filelist=file%>%set_names()%>%tolower()%>%
     map_dfr(str_detect,tolower(keyword))%>%t()%>%`colnames<-`(keyword)%>%
     apply(.,2,function(x)(which(x==T)%>%dir()[.]))
   print(filelist)
