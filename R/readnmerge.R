@@ -32,7 +32,7 @@ readnmerge=function(html=F){
   
   filelist=file%>%set_names()%>%tolower()%>%
     map_dfr(str_detect,tolower(keyword))%>%t()%>%`colnames<-`(keyword)%>%
-    apply(.,2,function(x)(which(x==T)%>%dir()[.]))
+    apply(.,2,function(x)(which(x==T)%>%file[.]))
   print(filelist)
   if (class(filelist)=="character")
     filelist=as.list(filelist)
