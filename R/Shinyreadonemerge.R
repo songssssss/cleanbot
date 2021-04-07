@@ -33,7 +33,6 @@ Shinyreadonemerge=function(path,keyword,xls=F,writexlsx=F,writesav=F){
       for (i in 1:lengthno)
         alldata[((i-1)*maxno+1):i*maxno]%>%writexl::write_xlsx(path = paste(names(filelist),i,".xlsx",sep = ""))
       }
-  
   if(writesav==T)
     alldata%>%haven::write_sav(path = paste(keyword,".sav",sep = ""))
   return(alldata)
