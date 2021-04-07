@@ -11,7 +11,7 @@
 #' @import writexl
 #' @export
 #'
-Shinyreadonemerge=function(xls=F,path,keyword,writexlsx,writesav){
+Shinyreadonemerge=function(xls=F,path,keyword,writexlsx=F,writesav=F){
   setwd(path)
   if (xls==F)
     dir()%>%tolower%>%grepl(".xlsx",.)%>%dir()[.]->file
