@@ -51,7 +51,7 @@ readnmerge=function(html=F,writexlsx=F,writesav=F){
     maxno=1048000
     lengthno=dim(alldata)[1]%/%maxno+1
     for (i in 1:lengthno)
-      alldata[((i-1)*maxno+1):(i*maxno),]%>%writexl::write_xlsx(path = paste(names(filelist),i,".xlsx",sep = ""))
+      alldata[[i]][((i-1)*maxno+1):(i*maxno),]%>%writexl::write_xlsx(path = paste(names(filelist),i,".xlsx",sep = ""))
   }
   if(writesav==T)
     alldata[[i]]%>%haven::write_sav(path = paste(names(filelist)[i],".sav",sep = ""))
