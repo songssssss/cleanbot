@@ -25,8 +25,15 @@ Shinyreadonemerge=function(path,keyword,xls=F,writexlsx=F,writesav=F){
     alldata=filelist%>%set_names()%>%map_df(readaexcel)}
   else{
     alldata=filelist%>%set_names()%>%map_df(readhtml)}
-  if(writexlsx==T)
-    alldata%>%writexl::write_xlsx(path = paste(keyword,".xlsx",sep = ""))
+  #if(writexlsx==T)
+  # alldata%>%writexl::write_xlsx(path = paste(keyword,".xlsx",sep = ""))
+  if(writexlsx==T){
+      maxno=1048000
+      lengthno=dim(alldata)[1]%/%maxno+1
+      for (i in 1:lengthno)
+        alldata[((i-1)*maxno+1):i*maxno]%>%writexl::write_xlsx(path = paste(names(filelist),i,".xlsx",sep = ""))
+      }
+  
   if(writesav==T)
     alldata%>%haven::write_sav(path = paste(keyword,".sav",sep = ""))
   return(alldata)
