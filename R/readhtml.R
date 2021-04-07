@@ -9,5 +9,7 @@
 #' @importFrom rvest read_html
 #' @importFrom rvest html_table
 #' @export
-readhtml=function(file)
-  read_html(file)%>%xml_find_all(.,"//table")%>%.[3]%>%html_table()%>%as.data.frame()%>%`colnames<-`(.[1,])%>%.[-1,]
+readhtml=function(file){
+  read_html(file)%>%xml_find_all(.,"//table")%>%.[3]%>%html_table()%>%as.data.frame()%>%`colnames<-`(.[1,])%>%.[-1,]%>%
+    `names<-`(gsub("[[:punct:][:blank:]]", "",names(.)))
+}
