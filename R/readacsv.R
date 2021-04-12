@@ -10,4 +10,4 @@
 #' @export
 
 readacsv=function(file)
-  file%>%read.csv(fileEncoding="UTF-8-BOM")%>%lapply(.,as.character)%>%as.data.frame%>%`names<-`(gsub("[[:punct:][:blank:]]", "",names(.)))
+  file%>%read.csv(fileEncoding="UTF-8-BOM")%>%`names<-`(gsub("[[:punct:][:blank:]]", "",names(.)))
