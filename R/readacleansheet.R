@@ -12,7 +12,7 @@
 #' @export
 
 readacleansheet=function(filename,sheetname){
-  read_excel(filename,sheetname)->df
+  read_excel(filename,sheetname,col_types = "text")->df
   if (is_empty(df))
     return(data.frame())
 
