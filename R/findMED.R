@@ -10,7 +10,7 @@
 #' @export
 findMED=function(cohort,data){
   data$PrescriptionStartDate%>%ifelse(is.na(.),data$DispensingDateyyyymmdd,.)->data$PrescriptionStartDate
-  data$PrescriptionEndDate%>%ifelse(is.na(.)&!is.na(data$DispensingDuration),as.Date(data$PrescriptionStartDate)+as.numeric(data$DispensingDuration),.)->data$PrescriptionEndDate
+  data$PrescriptionEndDate%>%ifelse(is.na(.)&!is.na(data$DispensingDuration),as.Date(data$PrescriptionStartDate,,origin="1970-01-01")+as.numeric(data$DispensingDuration),.)->data$PrescriptionEndDate
   data$PrescriptionEndDate%>%ifelse(is.na(.)&is.na(data$DispensingDuration),data$PrescriptionStartDate,.)->data$PrescriptionEndDate
 
   data%>%group_by(ReferenceKey)%>%summarise(Start= min(PrescriptionStartDate),End=max(PrescriptionEndDate))%>%
