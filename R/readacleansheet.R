@@ -24,5 +24,5 @@ readacleansheet=function(filename,sheetname){
   if(!is_empty(footerind))
     df%>%.[1:(dim(.[1])[1]+footerind-202),]->df
 
-  lapply(df,as.character)%>%as.data.frame%>%`names<-`(gsub("[[:punct:][:blank:]]", "",names(df)))
+  df%>%`names<-`(gsub("[[:punct:][:blank:]]", "",names(df)))
 }
