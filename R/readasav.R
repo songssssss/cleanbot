@@ -11,4 +11,4 @@
 #' @export
 
 readasav=function(file)
-  file%>%read_sav%>%lapply(.,as.character)%>%as.data.frame%>%`names<-`(gsub("[[:punct:][:blank:]]", "",names(.)))
+  file%>%read_sav%>%lapply(.,as.character)%>%as.data.frame%>%`names<-`(gsub("[[:punct:][:blank:]]", "",names(.)))%>%return(.)
