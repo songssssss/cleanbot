@@ -12,5 +12,5 @@
 #' @export
 readhtml=function(file){
   read_html(file)%>%xml_find_all(.,"//table")%>%.[3]%>%html_table()%>%as.data.frame()%>%`colnames<-`(.[1,])%>%.[-1,]%>%
-    `names<-`(gsub("[[:punct:][:blank:]]", "",names(.)))
+    `names<-`(gsub("[[:punct:][:blank:]]", "",names(.)))%>%return(.)
 }
